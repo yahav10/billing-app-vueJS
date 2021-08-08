@@ -62,6 +62,24 @@
       </div>
       <div class="group">
         <div class="form-input-label">
+          <label class="form-label">Street:</label>
+          <el-input
+              placeholder="Street"
+              v-model="user.street"
+              name="street"
+              clearable>
+          </el-input>
+        </div>
+        <div class="form-input-label">
+          <label class="form-label">Phone:</label>
+          <el-input
+              placeholder="Phone"
+              v-model="user.phone"
+              name="phone"
+              clearable>
+          </el-input>
+        </div>
+        <div class="form-input-label">
           <label class="form-label">Currency:</label>
           <el-input
               placeholder="Currency"
@@ -70,6 +88,8 @@
               clearable>
           </el-input>
         </div>
+      </div>
+      <div class="group">
         <div class="form-input-label">
           <label class="form-label">Credit Card:</label>
           <el-input
