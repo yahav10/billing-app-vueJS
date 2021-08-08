@@ -2,7 +2,7 @@
   <div class="container">
     <h4>Customers List</h4>
       <el-table :data="users" style="width: 100%">
-        <el-table-column label="First Name" width="140">
+        <el-table-column label="First Name" width="120">
           <template #default="{row}">
             <el-input size="small" style="text-align:center" v-model="row.first_name" controls-position="right"></el-input>
           </template>
@@ -17,9 +17,19 @@
             <el-input size="small" style="text-align:center" v-model="row.email" controls-position="right"></el-input>
           </template>
         </el-table-column>
-        <el-table-column label="Country" width="160">
+        <el-table-column label="Country" width="130">
           <template #default="{row}">
             <el-input size="small" style="text-align:center" v-model="row.country" controls-position="right"></el-input>
+          </template>
+        </el-table-column>
+        <el-table-column label="Street" width="160">
+          <template #default="{row}">
+            <el-input size="small" style="text-align:center" v-model="row.street" controls-position="right"></el-input>
+          </template>
+        </el-table-column>
+        <el-table-column label="Phone" width="140">
+          <template #default="{row}">
+            <el-input size="small" style="text-align:center" v-model="row.phone" controls-position="right"></el-input>
           </template>
         </el-table-column>
         <el-table-column label="Credit Card Type" width="140">
@@ -58,7 +68,6 @@ export default class CustomersList extends Vue {
     CustomersDataService.getAll()
       .then((response) => {
         this.users = response.data;
-        console.log(response.data);
       })
       .catch((e) => {
         console.log(e);
@@ -110,10 +119,8 @@ export default class CustomersList extends Vue {
   }
 
   updateCustomer(id: any, data?: object) {
-    console.log("DATA: ", data)
     CustomersDataService.update(id, data)
         .then((response) => {
-          console.log(response.data);
           this.refreshList();
         })
         .catch((e) => {
@@ -124,7 +131,6 @@ export default class CustomersList extends Vue {
   removeCustomer(id: any) {
     CustomersDataService.delete(id)
         .then((response) => {
-          console.log(response.data);
           this.refreshList();
         })
         .catch((e) => {
@@ -140,8 +146,7 @@ export default class CustomersList extends Vue {
 
 <style scoped>
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: block;
+  width: 100%;
 }
 </style>
